@@ -21,7 +21,19 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
+
+        // Optional: kleine Helfer
+    public const ROLE_USER   = 'user';
+    public const ROLE_ADMIN  = 'admin';
+    public const ROLE_MASTER = 'master';
+
+    public function isMaster(): bool
+    {
+        return $this->role === self::ROLE_MASTER;
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.
